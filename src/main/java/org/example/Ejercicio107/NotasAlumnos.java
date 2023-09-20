@@ -2,6 +2,7 @@ package org.example.Ejercicio107;
 
 import javax.print.MultiDoc;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class NotasAlumnos {
@@ -23,48 +24,51 @@ public class NotasAlumnos {
             //Obtenemos cada una de las partes: MODULOS + Alumno + notas
             partes = lineas[x].split("#");
             modulos = lineas[0].split("#");
-
             nombreAlumno = partes[0].trim();
 
             for (int j = 1; j < partes.length; j++){
+                modulo = modulos[j].trim();
              if (!partes[j].trim().isEmpty()){
                 nota = Integer.parseInt(partes[j].trim());
-                modulo = modulos[j].trim();
                 //Metemos clave valor en el hashmap
                  modulosNotas.put(modulo,nota);
              }else {
                  nota = -1;
-                 modulosNotas.put(modulo,nota);
-
+                 modulosNotas.put(modulo,-1);
              }
-             alumno = new Alumno(nombreAlumno,modulosNotas);
-
             }
-            calcularMedia(alumno);
+            alumno = new Alumno(nombreAlumno,modulosNotas);
 
+            calcularMedia(alumno);
         }
-        
-        
+
+        System.out.println();
+        calcularMediaModulos(alumno);
+
+
+    }
+
+    private void calcularMediaModulos(Alumno alumno) {
+
     }
 
     public void calcularMedia(Alumno alumno){
         double suma = 0;
         double contador = 0;
         double media = 0.0;
+
         for (String clave:alumno.getModuloNota().keySet()) {
             int valor = alumno.getModuloNota().get(clave);
             if (valor != -1){
-                System.out.println(alumno.getModuloNota());
                 contador ++;
                 suma += valor;
             }
         }
-        //TODO LA MEDIA ESTA MAL
-        System.out.println(suma);
-        System.out.println("contador : " + contador);
         media = suma / contador;
-        System.out.println("Medias alumnos");
-        System.out.println("La media de " + alumno.getNombre() + " es " + media);
+
+        System.out.println(alumno.getNombre());
+        System.out.println(media);
+
     }
 
 }
