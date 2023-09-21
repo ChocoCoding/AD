@@ -81,15 +81,22 @@ public class Ejercicio_Piscina {
                         sc = new Scanner(System.in);
                         System.out.println("Introduzca su DNI, debe ser en este formato: [12345678A]");
                         String dni = sc.nextLine();
+
+                        //Comprobamos si es un DNI válido
                         if (comprobarDni(dni)){
-                            for (int x = 0; x < reservasPorFranja[franja].length; x++){
-                                if (reservasPorFranja[franja][x] == null){
-                                    reservasPorFranja[franja][x] = dni;
-                                    System.out.println("Se ha reservado correctamente" + "\n");
-                                    break;
-                                }else if (reservasPorFranja[franja][x].equals(dni)){
-                                    System.out.println("No se puede reservar 2 veces en el mismo dia");
-                                    break;
+                            if (!comprobarSiDniEstaRegistrado(dni, reservasPorFranja)) {
+                                for (int y = 0; y < reservasPorFranja[franja].length; y++) {
+                                    if (reservasPorFranja[franja][y] == null) {
+                                        //En caso de que sea válido lo metemos en la primera posicion libre del array
+                                        reservasPorFranja[franja][y] = dni;
+                                        System.out.println("Se ha reservado correctamente" + "\n");
+                                        break;
+                                        //En caso de que ya este registrado, avisamos de que no se puede reservar y break
+
+                                    } else if (reservasPorFranja[franja][y].length() == 9) {
+
+                                    }
+
                                 }
                             }
                         }
@@ -100,9 +107,26 @@ public class Ejercicio_Piscina {
                 }
                 }catch (InputMismatchException | NumberFormatException ex){
                 System.out.println("Solo se permiten numeros enteros");
-
             }
         }
+    }
+
+    private static boolean comprobarSiDniEstaRegistrado(String dni,String[][] reservasPorFranja) {
+        boolean isRegistrado = false;
+        for (int x = 0; x < reservasPorFranja.length; x++){
+            for (int j = 0; j < reservasPorFranja[j].length; j++){
+                System.out.println(reservasPorFranja[0][j]);
+                //Comprobamos si el dni ya esta registrado
+                if (reservasPorFranja[x][j] != null && reservasPorFranja[x][j].equals(dni)){
+                    System.out.println("No se puede reservar 2 veces en el mismo dia");
+                    isRegistrado = true;
+                    break;
+                }if (isRegistrado){
+                    break;
+                }else isRegistrado = false;
+            }
+        }
+    return isRegistrado;
     }
 
     public static boolean comprobarDni(String dni){
@@ -143,9 +167,7 @@ public class Ejercicio_Piscina {
             }
         }
 
-        if (miDni.length() != 8){
-            return false;
-        }else return true;
+        return miDni.length() == 8;
     }
 
     private static String comprobarLetraDni(String dni){
