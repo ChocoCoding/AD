@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Alumno {
     private String nombre;
-    private Map<String, Integer> moduloNota = new HashMap<>();
+    private Map<String, Integer> moduloNota;
 
     public Alumno(String nombre, Map<String, Integer> moduloNota) {
         this.nombre = nombre;
