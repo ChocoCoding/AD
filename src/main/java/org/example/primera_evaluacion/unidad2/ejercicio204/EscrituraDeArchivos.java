@@ -9,7 +9,7 @@ import java.io.IOException;
 // si usáis Linux: /home/usuario/Descargas/ficheros o bien podéis usar la ruta que queráis.
 
 public class EscrituraDeArchivos {
-    File file = new File(".\\files\\file2");
+    File file = new File(".\\files\\file2.txt");
 
     String texto = "Texto a escribir";
     public void escribirArchivo(){
