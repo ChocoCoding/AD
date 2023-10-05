@@ -18,5 +18,6 @@ public class CopiaFichero {
         InputStream is = new FileInputStream(new File(String.valueOf(rutaOrigen)));
 
         Files.copy(rutaOrigen,rutaDestino);
+
     }
 }
