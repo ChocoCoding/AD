@@ -40,6 +40,8 @@ class RandomAccessFileExample {
 
     private static byte[] readCharsFromFile(String filePath, int chars) throws IOException {
         RandomAccessFile file = new RandomAccessFile(filePath, "r");
+        System.out.println(file.getFilePointer());
+        file.write(2);
         file.seek(10);
         byte[] bytes = new byte[chars];
         file.read(bytes);

@@ -22,7 +22,6 @@ public class FicheroTexto {
 
     }
 
-
     public void leer() throws IOException {
         File file = new File(".\\files\\ejercicio210\\fichero.txt");
         FileReader fr = new FileReader(file);

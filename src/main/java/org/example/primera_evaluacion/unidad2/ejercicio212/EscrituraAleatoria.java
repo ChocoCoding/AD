@@ -2,6 +2,7 @@ package org.example.primera_evaluacion.unidad2.ejercicio212;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //Desarrolla un programa Java que permita:
@@ -52,11 +53,26 @@ public class EscrituraAleatoria {
         double[] notas = {7.5, 4.2, 6.5, 8.0, 3.2, 9.2, 9.9};
 
         RandomAccessFile raf = new RandomAccessFile(file,"rw");
-        byte[] bytes = "Hello World".getBytes("UTF-8");
-        raf.write(bytes, 2, 5);
-        List<Byte> bytes1 = new ArrayList<>();
+        raf.seek(raf.length());
+        for (int x = 0; x < apellidos.length; x++){
+            raf.writeUTF(apellidos[x]);
+            raf.writeInt(edades[x]);
+            raf.writeDouble(notas[x]);
+        }
 
-        ByteArrayOutputStream escribir = new ByteArrayOutputStream();
+        raf.seek(0);
+        //Leemos el archivo
+        try {
+            while (true){
+                System.out.println(raf.readUTF());
+                System.out.println(raf.readInt());
+                System.out.println(raf.readDouble());
+            }
+        }catch (EOFException eof){
+
+        }
+
+
         
     }
 }
