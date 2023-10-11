@@ -13,7 +13,12 @@ package org.example.primera_evaluacion.unidad2.ejercicio218;
         Visualizar el archivo alumnos.xml utilizando DOM.
         Visualizar el archivo alumnos.xml utilizando SAX.*/
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Alumnos {
-
-
+    public static void main(String[] args) {
+        LecturaArchivos.leerArchivo();
+    }
 }
