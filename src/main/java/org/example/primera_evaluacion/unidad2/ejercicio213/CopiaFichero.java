@@ -16,7 +16,6 @@ public class CopiaFichero {
         Path rutaOrigen = Paths.get(".\\files\\ejercicio213\\directorio\\origen.txt");
         Path rutaDestino = Paths.get(".\\files\\ejercicio213\\directorio\\destino.txt");
         InputStream is = new FileInputStream(new File(String.valueOf(rutaOrigen)));
-
         Files.copy(rutaOrigen,rutaDestino);
 
     }
