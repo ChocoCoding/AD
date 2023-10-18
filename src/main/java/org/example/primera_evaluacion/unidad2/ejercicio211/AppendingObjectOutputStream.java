@@ -8,7 +8,6 @@ import java.io.OutputStream;
         public AppendingObjectOutputStream(OutputStream out) throws IOException {
             super(out);
         }
-
         @Override
         protected void writeStreamHeader() throws IOException {
             return;
